@@ -1,2 +1,3 @@
-# metabook
-metadata for a physical book
+# [metabook](https://github.com/LafeLabs/metabook)
+
+Metadata for a physical book
