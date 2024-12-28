@@ -1,10 +1,11 @@
 <?php
 
-$dnaurl = "https://raw.githubusercontent.com/LafeLabs/metabook/refs/heads/main/data/dna.txt";
+$dnaurl = "https://raw.githubusercontent.com/LafeLabs/imagefeed/main/data/dna.txt";
 
 if(isset($_GET["dna"])){
     $dnaurl = $_GET["dna"];
 }
+
 
 $baseurl = explode("data/",$dnaurl)[0];
 $dnaraw = file_get_contents($dnaurl);
@@ -12,10 +13,9 @@ $dna = json_decode($dnaraw);
 
 mkdir("data");
 mkdir("php");
-mkdir("json");
+mkdir("images");
 
-copy("https://raw.githubusercontent.com/LafeLabs/metabook/refs/heads/main/php/replicator.txt","replicator.php");
-
+copy("https://raw.githubusercontent.com/LafeLabs/imagefeed/main/php/replicator.txt","replicator.php");
 
 foreach($dna->html as $value){
     
@@ -30,27 +30,20 @@ foreach($dna->data as $value){
     
 }
 
-
 foreach($dna->php as $value){
  
     copy($baseurl."php/".$value,"php/".$value);
     copy($baseurl."php/".$value,explode(".",$value)[0].".php");
 
 }
-    
+
+
 
 
 ?>
-<a href = "index.html">CLICK ME(3/3)</a>
+<a href = "index.html">CLICK TO GO TO PAGE</a>
 <style>
-body{
-    background-color:BLACK;
-    font-family:Comic Sans MS;
-    font-size:3em;
-}
 a{
-        font-size:3em;
-        color:#ff2cb4;
-
+    font-size:3em;
 }
 </style>
