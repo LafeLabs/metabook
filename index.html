@@ -5,7 +5,8 @@
        <!--
     
     TRASH MAGIC!
-    
+
+
        -->
        <!--Stop Google:-->
        <META NAME="robots" CONTENT="noindex,nofollow">
@@ -13,18 +14,69 @@
       <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///wANAP8A5Dz6ABueRwAAt/8A6BonABo86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIgREREd3dwAAB3d3d3d3d3d3d3d3d3d3d3d3d3VVVVVVVQAFVVAAVVVQIiBRAiIBEQIAIBECAAERAgAgFgIABmYCIiBmAiIGZgIiIGYCIgZmYCIAaIAAMzMzAAiIiIiIiIiIiIiIiIiIiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
       
        <title>TRASH MAGIC NETWORK</title>    
+       <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     </head>
     <body>  
+    <div id = "qrcode"></div>
+<table>
+    <tr>
+        <td>PUBLISHER LINK</td>
+        <TD>
+            <INPUT id ="publisherlinkinput">
+        </TD>
+        <TD>
+            <A ID = "publisherlink"></A>
+        </TD>
+    </tr>
+    <TR>
+        <TD>
+            BOOK TRASH MAGIC PAGE URL:
+        </TD>
+        <TD>
+            <INPUT id ="trashmagiclinkinput">
+        </TD>
+        <TD>
+            <A ID = "trashmagiclink"></A>
+        </TD>
+
+    </TR>
+    <tr>
+        <td>AUTHOR LINK:</td>
+        <TD>
+            <INPUT id = "authorlinkinput">
+        </TD>
+        <td>
+            <a id = "authorlink"></a>
+        </td>
+    </tr>
+</table>
+
+<p>
+    I am dirt wizard! I bought this book because I like other books by west but this was too much of a deep dive into the history of philosophy for me! It was too much academic philosophy of the kind you have to write as an academic philosopher to get tenure in an academic philosophy department!  That is not my jam! But it looks like a great book! You should read it!
+I will give this book to you in a drop at a little library in the denver metro area, tell me where to drop it and I'll drop it, but then you have to be the keeper of the book and find the next reader!  And then you have to replicate this page and make your own book page to pass the book along to the next reader!  If you are not in the denver metro, we can find a kourier to bring the book to where you are!  Contact the dirt wizard on cyberpunk.Lol!  Dirt wizard 666!  That's my main social media! 
+
+
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+</p>
+
     <ul>
         <li>
             <a href = "edit.html">EDIT THIS PAGE</a>
         </li>
+
+        <LI>
+            <a href = "https://github.com/LafeLabs/metabook">https://github.com/LafeLabs/metabook</a>
+        </LI>
         <LI>
             <A href = "freestore/">freestore/</A>
         </LI>
         <li>
             <a href = "editor.php">PHP EDITOR</a>
         </li>
+        <li>
+            <a href = "webeditor.html">HTML EDITOR</a>
+        </li>
+
         <li>
             <a href = "readme.html">README.md</a>
         </li>
@@ -37,41 +89,90 @@
 <h1>METABOOK</h1>
 
 
+
+
+<img alt = "PHOTO OF THE COVER OF THE BOOK \"THE AMERICAN EVASION OF PHILOSOPHY\" BY CORNEL WEST. THERE IS AN IMAGE OF PROFESSOR WEST LOOKING QUITE PROFESSORIAL.  THE SUBTITLE IS \"A GENEALOGY OF PRAGMATISM\"" src = "https://trashrobot.net/The_American_Evasion_of_Philosophy/freestore/images/20241228_091506.jpg">
+
 <pre id = "jsonpre">
     
 </pre>
 
 <script>
 
-    book = {};
-    book.trashmagic = {};
-    book.trashmagic.repository = "https://github.com/LafeLabs/metabook";
-    book.trashmagic.url = "https://trashrobot.net/metabook/";
-    book.trashmagic.json = "https://trashrobot.net/metabook/json/The_American_Evasion_of_Philosophy.txt";
-    book.trashmagic.wall = "https://trashrobot.net/metabook/json/The_American_Evasion_of_Philosophy.html";
-    book.url = "https://uwpress.wisc.edu/books/0541.htm";
-    book.author = {};
-    book.author.name = "Cornel West";
-    book.author.url = "http://www.cornelwest.com/";
-    book.title = "The American Evasion of Philosophy";
-    book.subtitle = "A Genealogy of Pragmatism";
-    book.publisher = {};
-    book.publisher.name = "University of Wisconsin Press";
-    book.publisher.url = "https://uwpress.wisc.edu/";
-    book.ISBN = "0-299-11964-5";
-    book.librarian = {};
-    book.librarian.contact = "https://cyberpunk.lol/@dirtwizard666";
-    book.librarian.name = "DIRT WIZARD";
-    book.librarian.city = "NEODENVER";
-    book.format = "soft cover";
-    book.images = {};
+var httpc3 = new XMLHttpRequest();
+httpc3.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+        book = JSON.parse(this.responseText);
+        loadjsonvals();
+    }
+};
+httpc3.open("GET", "fileloader.php?filename=book.txt", true);
+httpc3.send();
+
+function loadjsonvals(){
+    document.getElementById("jsonpre").innerHTML = JSON.stringify(book,null,"    ");
+
+    document.getElementById("publisherlink").href = book.publisher.url;
+    document.getElementById("publisherlink").innerHTML = book.publisher.url;
+    document.getElementById("publisherlinkinput").value = book.publisher.url;
+  
+    document.getElementById("trashmagiclink").href = book.trashmagic.url;
+    document.getElementById("trashmagiclink").innerHTML = book.trashmagic.url;
+    document.getElementById("trashmagiclinkinput").value = book.trashmagic.url;
+
+    document.getElementById("authorlink").href = book.author.url;
+    document.getElementById("authorlink").innerHTML = book.author.url;
+    document.getElementById("authorlinkinput").value = book.author.url;
+
+}
+
+document.getElementById("trashmagiclinkinput").onchange = function(){
+    book.trashmagic.url = this.value;
+    loadjsonvals();
+    savejson();
+}
+
+document.getElementById("authorlinkinput").onchange = function(){
+    book.author.url = this.value;
+    loadjsonvals();
+    savejson();
+}
+
+function savejson(){
+
+    var url = "filesaver.php";        
+    var httpc2 = new XMLHttpRequest();
+    httpc2.open("POST", url, true);
+    httpc2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpc2.send("data="+encodeURIComponent(JSON.stringify(book,null,"    "))+"&filename=book.txt");//send text to filesaver.php
+
+}
+
+
+    codesquaresize = 170;
+    marginsize = 40;
+    fontsize = 12;
+    //globalurl = "http://www.trashrobot.org/qrcode.html";
+    globalurl = window.location.href;
+    qrcode = new QRCode(document.getElementById("qrcode"), {
+    	text: globalurl,
+    	width: codesquaresize,
+    	height: codesquaresize,
+    	colorDark : "#000000",
+    	colorLight : "#ffffff",
+    	correctLevel : QRCode.CorrectLevel.H
+    });
     
-
-    document.getElementById("jsonpre").innerHTML = JSON.stringify(book,null,"    ");    
-
 </script>
 
 <STYLE>
+    li,p{
+        font-size:2em;
+    }
+    p{
+        padding:2em 2em 2em 2em;
+        text-align:justify;
+    }
     pre{
         font-family:courier;
         background-color:black;
@@ -81,7 +182,7 @@
     IMG{
         display:block;
         text-align:center;
-        max-width:80%;
+        max-width:60%;
         margin:auto;
     }
     H1{
