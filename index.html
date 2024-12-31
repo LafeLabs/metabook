@@ -15,89 +15,56 @@
       
        <title>TRASH MAGIC NETWORK</title>    
        <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>       
+       <script src = "trashmagic.js"></script>
     </head>
     <body>  
-    <div id = "qrcode"></div>
-<table>
-    <tr>
-        <td>PUBLISHER LINK</td>
-        <TD>
-            <INPUT id ="publisherlinkinput">
-        </TD>
-        <TD>
-            <A ID = "publisherlink"></A>
-        </TD>
-    </tr>
-    <TR>
-        <TD>
-            BOOK TRASH MAGIC PAGE URL:
-        </TD>
-        <TD>
-            <INPUT id ="trashmagiclinkinput">
-        </TD>
-        <TD>
-            <A ID = "trashmagiclink"></A>
-        </TD>
+<H1>
+    <a href = "edit.html">EDIT THIS PAGE</a>
+</H1>
+<h1 id = "title">METABOOK</h1>
 
-    </TR>
-    <tr>
-        <td>AUTHOR LINK:</td>
-        <TD>
-            <INPUT id = "authorlinkinput">
-        </TD>
-        <td>
-            <a id = "authorlink"></a>
-        </td>
-    </tr>
-</table>
+<div id = "qrcode"></div>
 
-<p>
-    I am dirt wizard! I bought this book because I like other books by west but this was too much of a deep dive into the history of philosophy for me! It was too much academic philosophy of the kind you have to write as an academic philosopher to get tenure in an academic philosophy department!  That is not my jam! But it looks like a great book! You should read it!
-I will give this book to you in a drop at a little library in the denver metro area, tell me where to drop it and I'll drop it, but then you have to be the keeper of the book and find the next reader!  And then you have to replicate this page and make your own book page to pass the book along to the next reader!  If you are not in the denver metro, we can find a kourier to bring the book to where you are!  Contact the dirt wizard on cyberpunk.Lol!  Dirt wizard 666!  That's my main social media! 
+<UL id = "LIST"></UL>
 
 
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-</p>
-
-    <ul>
-        <li>
-            <a href = "edit.html">EDIT THIS PAGE</a>
-        </li>
-
-        <LI>
-            <a href = "https://github.com/LafeLabs/metabook">https://github.com/LafeLabs/metabook</a>
-        </LI>
-        <LI>
-            <A href = "freestore/">freestore/</A>
-        </LI>
-        <li>
-            <a href = "editor.php">PHP EDITOR</a>
-        </li>
-        <li>
-            <a href = "webeditor.html">HTML EDITOR</a>
-        </li>
-
-        <li>
-            <a href = "readme.html">README.md</a>
-        </li>
-        <li>
-            <a href = "../">../</a>
-        </li>
-    </ul>
-
-            
-<h1>METABOOK</h1>
+<pre id = "jsonpre"></pre>
 
 
-
-
-<img alt = "PHOTO OF THE COVER OF THE BOOK \"THE AMERICAN EVASION OF PHILOSOPHY\" BY CORNEL WEST. THERE IS AN IMAGE OF PROFESSOR WEST LOOKING QUITE PROFESSORIAL.  THE SUBTITLE IS \"A GENEALOGY OF PRAGMATISM\"" src = "https://trashrobot.net/The_American_Evasion_of_Philosophy/freestore/images/20241228_091506.jpg">
-
-<pre id = "jsonpre">
-    
-</pre>
 
 <script>
+rainbowstring(document.getElementById("title"));
+
+METABOOK = {};
+METABOOK.NAME = "METABOOK";
+METABOOK.TITLE = "The American Evasion of Philosophy";
+METABOOK.AUTHOR = "Cornel West";
+METABOOK.DATE = "1989";
+METABOOK.PUBLISHER = {};
+METABOOK.PUBLISHER.NAME = "THE UNIVERSITY OF WISCONSIN PRESS";
+METABOOK.PUBLISHER.LOCATION = "MADISON, WISCONSIN";
+METABOOK.PUBLISHER.URL = "https://uwpress.wisc.edu/";
+METABOOK.URLS = ["https://uwpress.wisc.edu/books/0541.htm","https://trashrobot.net/The_American_Evasion_of_Philosophy/"]
+METABOOK.URL = "https://trashrobot.net/The_American_Evasion_of_Philosophy/";
+METABOOK.ISBN = "0-299-11964-5";
+METABOOK.WATERSHED = "SOUTH PLATTE RIVER";
+METABOOK.STREET = "US ROUTE 36";
+METABOOK.CITY = "NEODENVER";
+METABOOK.LIBRARIAN = {};
+METABOOK.LIBRARIAN.NAME = "DIRT WIZARD";
+METABOOK.LIBRARIAN.URL = "HTTPS://WWW.TRASHROBOT.NET";
+METABOOK.LIBRARIAN.FEDIVERSE = "https://cyberpunk.lol/@dirtwizard666";
+METABOOK.FORMAT = "6X9 PERFECTBOUND, 279 PAGES"
+METABOOK.MANIFESTO = "EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW!"
+METABOOK.TAGLINE = "FREE PHILOSOPHY BOOK!";
+METABOOK.NOTES = "I BOUGHT THIS BOOK BECAUSE I LIKE PROFESSOR WEST'S OTHER WORK BUT IT IS TOO ACADEMIC FOR ME SO I AM PASSING IT ALONG TO SOMEONE WHO CAN REALLY APPRECIATE THIS DEEP DIVE INTO AMERICAN PHILOSOPHICAL HISTORY";
+METABOOK.WALL = "THIS IS THE WALL. IT IS WHERE WE WRITE LITTLE NOTES TO ONE ANOTHER ABOUT THIS BOOK AND ABOUT METABOOK.";
+METABOOK.MAGIC = ["TRASH","DIRT","BOOK","CHAOS","WEB","SUN","WATER","STREET"];
+
+document.getElementById("jsonpre").innerHTML = JSON.stringify(METABOOK,null,"    ");
+
+savejson();
 
 var httpc3 = new XMLHttpRequest();
 httpc3.onreadystatechange = function(){
@@ -110,33 +77,41 @@ httpc3.open("GET", "fileloader.php?filename=book.txt", true);
 httpc3.send();
 
 function loadjsonvals(){
-    document.getElementById("jsonpre").innerHTML = JSON.stringify(book,null,"    ");
+    document.getElementById("LIST").innerHTML = "";
+    for(var attribute in METABOOK){
+        if(attribute != "NAME"){
+            var newli = document.createElement("LI");
+            document.getElementById("LIST").appendChild(newli);
+            if(typeof METABOOK[attribute] === 'object'){
+                var newul = document.createElement("UL");
+                newli.innerHTML = attribute + ":";
+                newli.appendChild(newul);
+                for(subattribute in METABOOK[attribute]){
+                    var newsubli = document.createElement("LI");
+                    newul.appendChild(newsubli);
+                    if(subattribute == "URL" || attribute == "URLS"){
+                        newsubli.innerHTML = "<a href = \"" + METABOOK[attribute][subattribute] + "\">" + subattribute + ":" + METABOOK[attribute][subattribute] + "</a>";
+                    }
+                    else{
+                        newsubli.innerHTML = subattribute + ":" + METABOOK[attribute][subattribute];
+                    }
 
-    document.getElementById("publisherlink").href = book.publisher.url;
-    document.getElementById("publisherlink").innerHTML = book.publisher.url;
-    document.getElementById("publisherlinkinput").value = book.publisher.url;
-  
-    document.getElementById("trashmagiclink").href = book.trashmagic.url;
-    document.getElementById("trashmagiclink").innerHTML = book.trashmagic.url;
-    document.getElementById("trashmagiclinkinput").value = book.trashmagic.url;
-
-    document.getElementById("authorlink").href = book.author.url;
-    document.getElementById("authorlink").innerHTML = book.author.url;
-    document.getElementById("authorlinkinput").value = book.author.url;
-
+                    
+                }        
+            }
+            else{
+                if(attribute == "URL"){
+                    newli.innerHTML = "<a href = \"" + METABOOK[attribute] + "\">" + attribute + ":" + METABOOK[attribute] + "</a>";
+                }
+                else{
+                    newli.innerHTML = attribute + ":" + METABOOK[attribute];
+                }
+            }
+        }
+    }
+    rainbow(document.getElementsByTagName("LI"));
 }
 
-document.getElementById("trashmagiclinkinput").onchange = function(){
-    book.trashmagic.url = this.value;
-    loadjsonvals();
-    savejson();
-}
-
-document.getElementById("authorlinkinput").onchange = function(){
-    book.author.url = this.value;
-    loadjsonvals();
-    savejson();
-}
 
 function savejson(){
 
@@ -144,7 +119,7 @@ function savejson(){
     var httpc2 = new XMLHttpRequest();
     httpc2.open("POST", url, true);
     httpc2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    httpc2.send("data="+encodeURIComponent(JSON.stringify(book,null,"    "))+"&filename=book.txt");//send text to filesaver.php
+    httpc2.send("data="+encodeURIComponent(JSON.stringify(METABOOK,null,"    "))+"&filename=METABOOK.txt");//send text to filesaver.php
 
 }
 
@@ -166,17 +141,29 @@ function savejson(){
 </script>
 
 <STYLE>
-    li,p{
-        font-size:2em;
+h1{
+    font-size:4em;
+    font-family:arial;
+}
+    body{
+        background-color:#404040;
+        font-size:1em;
     }
-    p{
-        padding:2em 2em 2em 2em;
-        text-align:justify;
+    li{
+        font-family:arial;
+        border-radius:5px;
+        margin:1em 1em 1em 1em;
+        padding:1em 1em 1em 1em;
+
     }
     pre{
+        width:80%;
+        display:block;
+        margin:auto;
         font-family:courier;
         background-color:black;
         color:#00ff00;
+        overflow:scroll;
         padding: 1em 1em 1em 1em;
     }
     IMG{
