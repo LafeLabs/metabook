@@ -12,7 +12,7 @@ $dna = json_decode($dnaraw);
 
 mkdir("data");
 mkdir("php");
-mkdir("json");
+mkdir("LIBRARY");
 
 copy("https://raw.githubusercontent.com/LafeLabs/metabook/refs/heads/main/php/replicator.txt","replicator.php");
 
@@ -30,6 +30,11 @@ foreach($dna->data as $value){
     
 }
 
+foreach($dna->LIBRARY as $value){
+    
+    copy($baseurl."LIBRARY/".$value,"LIBRARY/".$value);
+    
+}
 
 foreach($dna->php as $value){
  

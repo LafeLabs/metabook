@@ -13,6 +13,7 @@ dna.txt is a json formatted file which points to all the files in this system, w
     $files = scandir(getcwd());
     $phpfiles = scandir(getcwd()."/php");
     $datafiles = scandir(getcwd()."/data");
+    $LIBRARYfiles = scandir(getcwd()."/LIBRARY");
 
     
     $htmlfiles = [];
@@ -34,6 +35,15 @@ dna.txt is a json formatted file which points to all the files in this system, w
                 array_push($dna->data,$value);
             }
             
+        }
+    }
+
+    $dna->LIBRARY = [];
+    foreach($LIBRARYfiles as $value){
+        if($value[0] != "."){
+            if(substr($value,-4) == ".txt"){
+                array_push($dna->LIBRARY,$value);
+            }
         }
     }
 
