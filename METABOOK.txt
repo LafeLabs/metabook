@@ -1,5 +1,5 @@
 {
-    "NAME": "METABOOK",
+    "NAME": "The_American_Evasion_of_Philosophy",
     "TITLE": "The American Evasion of Philosophy",
     "AUTHOR": "Cornel West",
     "DATE": "1989",

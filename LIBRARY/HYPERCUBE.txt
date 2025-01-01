@@ -1,0 +1,25 @@
+{
+    "NAME": "HYPERCUBE",
+    "SOURCE": "CARDBOARD",
+    "AUTHOR": "TRASH ROBOT",
+    "WATERSHED": "SOUTH PLATTE RIVER",
+    "STREET": "US ROUTE 36",
+    "CITY": "NEODENVER",
+    "LIBRARIAN": {
+        "NAME": "DIRT WIZARD",
+        "URL": "HTTPS://WWW.TRASHROBOT.NET",
+        "FEDIVERSE": "https://cyberpunk.lol/@dirtwizard666"
+    },
+    "MANIFESTO": "EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW!",
+    "TAGLINE": "FREE GEOMETRON HYPERCUBE!",
+    "MAGIC": [
+        "TRASH",
+        "DIRT",
+        "BOOK",
+        "CHAOS",
+        "WEB",
+        "SUN",
+        "WATER",
+        "STREET"
+    ]
+}

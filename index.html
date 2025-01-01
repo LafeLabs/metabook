@@ -73,6 +73,47 @@
 
 <UL id = "LIBRARY"></UL>
 
+<H1>LIBRARIAN</H1>
+
+<P>I AM THE DIRT WIZARD, LIBRARIAN OF FREE THINGS!  EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW! NO ONE IS FREE UNTIL EVERYONE IS FREE!</P>
+
+<UL id = "LIBRARIAN">
+    <LI>
+        <A HREF= "https://cyberpunk.lol/@dirtwizard666">DIRT WIZARD ON CYBERPUNK.LOL</A>
+    </LI>
+    <LI>
+        <A HREF = "https://www.trashrobot.net/">DIRT WIZARD ON THE WORLD WIDE WEB</A>
+    </LI>
+</UL>
+
+<H1>INTERLIRARY LOAN</H1>
+
+<P>THE LIBRARY OF LIBRARIES!</P>
+
+<UL ID = "INTERLIBRARY-LOAN">
+    <LI>
+        <A HREF = "https://www.denverlibrary.org/">DENVER PUBLIC LIBRARY</A>
+    </LI>
+    <LI>
+        <A HREF = "https://jeffcolibrary.org/">JEFFCO PUBLIC LIBRARY</A>
+    </LI>
+    <LI>
+        <A HREF = "https://jeffcolibrary.org/">JEFFCO PUBLIC LIBRARY</A>
+    </LI>
+    <LI>
+        <A HREF = "https://www.broomfield.org/276/Library-Home">BROOMFIELD PUBLIC LIBRARY</A>
+    </LI>
+    <LI>
+        <A HREF = "https://denverlibrary.on.worldcat.org/discovery">DENVER LIBRARY INTERLIBRARY LOAN SEARCH</A>
+    </LI>
+    <LI>
+        <A HREF = "https://search.worldcat.org/">WORLDCAT</A>
+    </LI>
+    <LI>
+        <A HREF = "https://littlefreelibrary.org/">LITTLE FREE LIBRARY</A>
+    </LI>
+</UL>
+
 <script>
 
     
@@ -128,7 +169,9 @@ function loadjsonvals(){
     rainbow(document.getElementById("LIST").getElementsByTagName("LI"));
 }
 
+rainbow(document.getElementById("LIBRARIAN").getElementsByTagName("LI"));
 
+rainbow(document.getElementById("INTERLIBRARY-LOAN").getElementsByTagName("LI"));
 
 function savejson(){
 
@@ -233,6 +276,16 @@ var httpc9 = new XMLHttpRequest();
             newli.className = "button";
             newli.onclick = function(){
                 filename = this.innerHTML;
+                var httpc3 = new XMLHttpRequest();
+                httpc3.onreadystatechange = function(){
+                    if (this.readyState == 4 && this.status == 200) {
+                        METABOOK = JSON.parse(this.responseText);
+                        loadjsonvals();
+                        savejson();
+                    }
+                };
+                httpc3.open("GET", "fileloader.php?filename=LIBRARY/" + filename, true);
+                httpc3.send();
 
             }
             document.getElementById("LIBRARY").appendChild(newli);
@@ -313,11 +366,16 @@ h1{
     .button{
         cursor:pointer;
         border:solid;
-        border-radius:10px;
+        border-radius:30px;
         margin:1em 1em 1em 1em;
         padding:1em 1em 1em 1em;
-
+        background-color:#ff2cb480;
+        border-width:30px;
+        border-color:white;
     }
+li::marker {
+  color: #ff2cb4;
+}
 </STYLE>
 
     </body>
