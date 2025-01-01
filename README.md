@@ -1,5 +1,8 @@
 # [metabook](https://github.com/LafeLabs/metabook)
 
+![](qrcode.png)
+![](qrcode-page.png)
+
 ```
 https://raw.githubusercontent.com/LafeLabs/metabook/refs/heads/main/php/replicator.txt
 ```
