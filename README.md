@@ -1,5 +1,9 @@
 # [metabook](https://github.com/LafeLabs/metabook)
 
+```
+https://raw.githubusercontent.com/LafeLabs/metabook/refs/heads/main/php/replicator.txt
+```
+
 Metadata for a physical book
 
 
