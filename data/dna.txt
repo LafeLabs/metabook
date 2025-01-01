@@ -26,6 +26,7 @@
         "dna.txt"
     ],
     "LIBRARY": [
+        "HYPERCUBE.txt",
         "The_American_Evasion_of_Philosophy.txt"
     ],
     "php": [
